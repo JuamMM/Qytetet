@@ -2,7 +2,7 @@
 # To change this template file, choose Tools | Templates
 # and open the template in the editor.
 
-module Tipo_casilla
+module TipoCasilla
     SALIDA= :salida
     CARCEL= :carcel
     JUEZ= :juez

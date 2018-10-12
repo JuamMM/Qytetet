@@ -10,23 +10,21 @@ class Casilla
     
   public
   
-  def const1(unNumero,unPrecio,unTipoCasilla,unTituloPropiedad)
-    @numero_casilla=unNumero
-    @coste=unPrecio
+  def initialize(unNumero,unTipoCasilla,unTituloPropiedad)
     @tipo_casilla=unTipoCasilla
     set_titulo(unTituloPropiedad)
+    @numero=unNumero
+    @coste=unTituloPropiedad.get_precio_compra
+  end
+  
+  def const1(unNumero,unTipoCasilla,unTituloPropiedad)
+    new(unNumero,unTipoCasilla,unTituloPropiedad)
   end
   
   def const2(unNumero,unTipoCasilla)
-    @numero_casilla=unNumero
-    @tipo_casilla=unTipoCasilla
-    @coste=0
+    new(unNumero,unTipoCasilla,Titulo_propiedad.new("", false, 0, 0, 0, 0, 0))
   end
   
-  def initialize ()
-    @numero=-1
-    @coste=-1
-  end
   
   def get_numero_casilla
     return @numero_casilla

@@ -3,6 +3,7 @@
 # and open the template in the editor.
 
 class Titulo_propiedad
+  private
   attr_accessor :nombre
   attr_accessor :hipotecada
   attr_accessor :precio_compra
@@ -12,6 +13,7 @@ class Titulo_propiedad
   attr_accessor :precio_edificar
   attr_accessor :num_casas
   attr_accessor :num_hoteles
+  
   def initialize (unNombre,unHipotecada,unPrecio,unAlquiler,unFactor,unaHipoteca,unEdificar)
     @nombre=unNombre
     @hipotecada=unHipotecada
@@ -23,6 +25,8 @@ class Titulo_propiedad
     @numcasas=0
     @numHoteles=0
   end
+  
+  public
   
   def get_nombre
     return @nombre

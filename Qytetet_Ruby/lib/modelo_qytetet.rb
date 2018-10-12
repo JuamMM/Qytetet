@@ -7,15 +7,20 @@ module ModeloQytetet
 require_relative "qytetet"
 require_relative "sorpresa"
 require_relative "tipo_sorpresa"
+require_relative "titulo_propiedad"
 require_relative "tipo_casilla"
+require_relative "casilla"
+require_relative "tablero"
   attr_accessor:objetoQytetet
+  attr_accessor:tablero
   def initialize
     @objetoQytetet = Qytetet.new
+    @tablero = Casilla.new(7,TipoCasilla::SALIDA,Titulo_propiedad.new("", false, 0, 0, 0, 0, 0))
   end
   
   def main
     @objetoQytetet.inicializar_cartas_sorpresa
-    puts @objetoQytetet.mazo.inspect
+    puts @tablero.to_s()
   end
  
 end

@@ -13,6 +13,7 @@ public class Jugador {
    private Boolean encarcelado;
    private String nombre;
    private int saldo;
+   
   
    public Jugador(String nombre){
        encarcelado=false;
@@ -20,40 +21,87 @@ public class Jugador {
        saldo=7500;
    }
     
-   public Boolean cancelarHipoteca(TituloPropiedad titulo){}
+   //Boolean cancelarHipoteca(TituloPropiedad titulo){}
    
-   public Boolean comprarTitulPropiedad(){}
+   //Boolean comprarTitulPropiedad(){}
    
-   public int cuantasCasasHotelesTengo(){}
+   //int cuantasCasasHotelesTengo(){}
    
-   public Boolean deboPagarAlquiler(){}
+   //Boolean deboPagarAlquiler(){}
    
-   public Sorpresa devolverCartaLibertad(){}
+   //Sorpresa devolverCartaLibertad(){}
    
-   public Boolean edificarCasa(TituloPropiedad titulo){}
+   //Boolean edificarCasa(TituloPropiedad titulo){}
    
-   public Boolean edificarHotel(TituloPropiedad titulo){}
+   //Boolean edificarHotel(TituloPropiedad titulo){}
    
-   private void eliminarDeMisPropiedades(){}
+   //private void eliminarDeMisPropiedades(){}
    
-   private Boolean esDeMiPropiedad(TituloPropiedad titulo){}
+   //private Boolean esDeMiPropiedad(TituloPropiedad titulo){}
    
-   public Boolean estoyEnCalleLibre(){}
+   //Boolean estoyEnCalleLibre(){}
    
-   public Sorpresa getCartaLibertad(){}
+   Sorpresa getCartaLibertad(){
+       
+   }
    
-   public Casilla getCasillaActual(){}
+   Casilla getCasillaActual(){}
    
-   public Boolean getEncarcelado(){}
+   Boolean getEncarcelado(){
+       return encarcelado;
+   }
    
    public String getNombre(){
        return nombre;
    }
    
-   public ArrayList<TituloPropiedad> getPropiedades(){}
+   public ArrayList<TituloPropiedad> getPropiedades(){
+       for(int i=0;i<)
+   }
    
-   public 
+   public int getSaldo(){
+       return saldo;
+   }
    
+   //Boolean hipotecarPropiedad(TituloPropiedad titulo){}
+   
+   //void irACarcel(Casilla casilla){}
+   
+   //int modificarSaldo(int cantidad){}
+   
+   //int obtenerCapital(){}
+   
+   //ArrayList<TituloPropiedad> obtenerPropiedades(Boolean hipotecada){}
+   
+   //void pagarAlquiler(){}
+   
+   //void pagarImpuesto(){}
+   
+   //void pagarLibertad(int  cantidad){}
+   
+   //void setAttribute(attribute){}
+   
+   void setCartaLibertad(Sorpresa carta){}
+   
+   void setCasilla(Casilla casilla){}
+   
+   void setEncarcelado(Boolean encarcelado){
+       this.encarcelado=encarcelado;
+   }
+   
+   void setEncarceladoSinPoderSalir(Boolean encarceladoSinPoderSalir){}
+   
+   public void setHaTiradoDado(Boolean haTiradoDado){}
+   
+   void setSaldo(int saldo){
+       this.saldo=saldo;
+   }
+   
+   //Boolean tengoCartaLibertad(){}
+   
+   //private Boolean tengoSaldo(int cantidad){}
+   
+   //Boolean venderPropiedad(Casilla casilla){}
    
    
 }

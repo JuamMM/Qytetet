@@ -13,21 +13,88 @@ import java.util.ArrayList;
  */
 public class Qytetet {
     
+    static private Qytetet juego; 
+    
+    
+    int MAX_JUGADORES=4;
+    int NUM_SORPRESAS=10;
+    public int NUM_CASILLAS=20;
+    int PRECIO_LIBERTAD=200;
+    int SALDO_SALIDA=1000;
+    
     private ArrayList<Sorpresa> mazo = new ArrayList<> ();
     private Tablero tablero;
+    private Dado dado;
+    private Jugador jugadorActual;  // por inicializar
+    private ArrayList<Jugador> jugadores; // por inicializar
+    private Sorpresa cartaActual;
+    
+    
     
     public Qytetet(){
         inicializarTablero();
+        jugadores= new ArrayList<> ();
+        dado = Dado.getInstance();
+
     }
-    public ArrayList getMazo(){
+    
+    public static Qytetet getInstance(){
+        if(juego == null){
+            juego = new Qytetet();
+        }
+    return juego;
+    }
+    
+    @Override
+    public String toString() {
+        return "Qytetet{" + "dado=" + dado + ", tablero=" + tablero + ", jugadorActual=" 
+                + jugadorActual + ", jugadores=" + jugadores + ", mazo=" + mazo + ", cartaActual=" 
+                + cartaActual + '}';
+    }
+    
+    public Tablero getTablero(){
+        return tablero;
+    }
+    
+    //void actuarSiEnCasillaEdificable(){}
+    
+    //void actuarSiEnCasillaNoEdificable(){}
+    
+    //public void aplicarSorpresa(){}
+    
+    //public Boolean cancelarHipoteca(int numeroCasilla){}
+    
+    //public Boolean edificarCasa(int numeroCasilla){}
+    
+    //public Boolean edificarHotel(int numeroCasilla){}
+    
+    //private void encarcelarJugador(){}
+    
+    Sorpresa getCartaAltual(){
+        return this.cartaActual;
+    }
+    
+    Dado getDado(){
+        return this.dado;
+    }
+    
+    Jugador getJugadorActual(){
+        return this.jugadorActual;
+    }
+    
+    public ArrayList<Jugador>getJugadores(){
+        return jugadores;
+    }
+    
+    ArrayList getMazo(){
         return mazo;
     }
     
-    private void inicializarTablero(){
-        tablero = new Tablero();
-    }
+    //public int getValorDado(){}
     
-    void inicializarCartasSorpresa(){
+    //public void hipotecarPropiedad(int numeroCasilla){}
+    
+    private void inicializarCartasSorpresa(){
         mazo.add (new Sorpresa ("Te han pillado robando comida en el Lecho de "
                 + "Pulgas ,debes ir a las mazmorras de Desembarco del Rey.",tablero.getCasillaCarcel().getNumeroCasilla(),
                 TipoSorpresa.IRACASILLA));
@@ -59,8 +126,60 @@ public class Qytetet {
                 + "tienes que pagar un tributo por a verla provocado, tienes que pagar "
                 + "250 monedas de oro a cada jugador",-250*1,TipoSorpresa.PORJUGADOR));
     } 
-    
-    public Tablero getTablero(){
-        return tablero;
+
+    public void iniciarJuego(ArrayList<String> nombres){
+        this.inicializarCartasSorpresa();
+        this.inicializarTablero();
+        this.inicializarJugadores(nombres);
+        //this.salidaJugadores(); // Falta hacer metodo
     }
+    
+    private void inicializarJugadores(ArrayList<String> nombres){
+        
+        for(int i = 0; i < nombres.size(); i++){
+            this.jugadores.add( new Jugador(nombres.get(i)) );
+        }
+}
+ 
+    private void inicializarTablero(){
+        tablero = new Tablero();
+    }
+    
+    //private Boolean intentarSalircarcel(){}
+    
+    //private jugar(){}
+    
+    //void mover(int numCasillaDestino){}
+    
+    //public Casilla obtenerCasillaJugadorActual(){}
+    
+    //public int obtenerCasillasTablero(){}
+    
+    //public ArrayList<int> obtenerPropiedadesJugador(){}
+    
+    //public ArrayList<int> obtenerPropiedadesJugadorSegunEstadoHipoteca(Boolean estadoHipoteca)
+    
+    //public void obtenerRanking(){}
+    
+    //public int obtenerSaldoJugadorActual(){}
+    
+    private void salidaJugadores(){
+        for(int i = 0; i < this.jugadores.size(); i++){
+            // Establecemos a cada jugador en la casilla 0 -> Casilla de salida
+            jugadores.get(i).setCasillaActual(tablero.obtenerCasillaNumero(0));
+            
+            // Establecemos a cada jugador el saldo a 7500
+            jugadores.get(i).setSaldo(7500);            
+
+}
+    
+    private void setCartaActual(Sorpresa cartaActual){}
+    
+    //public void siguienteJugado(){}
+    
+    //int tirarDado(){}
+    
+    //public Boolean venderPropiedad(int numeroCasilla){}
+    
+    
 }

@@ -20,6 +20,9 @@ public class Tablero {
    public Casilla getCasillaCarcel(){
        return carcel;
    }
+   public Casilla obtenerCasillaNumero(int numeroCasilla){
+        return casillas.get(numeroCasilla);
+   }
    
    @Override        
    public String toString(){

@@ -31,6 +31,7 @@ public class Casilla {
        
        
    }
+  // TituloPropiedad asignarPropieterio(Jugador jugador){}
    
    private void setTitulo (TituloPropiedad titulo){
        this.titulo=titulo;
@@ -61,5 +62,14 @@ public class Casilla {
         }else{
             return comun;
         }
+        
    }
+   
+   //int pagarAlquiler(){}
+   
+   //Boolean propietarioEncarcelado(){}
+   
+   //Boolean soyEdificable(){}
+   
+   //Boolean tengoPropietario(){}
 }

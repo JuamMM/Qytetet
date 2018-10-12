@@ -11,11 +11,21 @@ import java.util.Random;
  * @author joseng2709
  */
 public class Dado {
+    private static Dado dado;
+    
     int valor;
     
     public Dado(){
+        dado = null;
         valor=0;
     }
+    
+    public static Dado getInstance(){
+       if(dado == null){
+           dado = new Dado();
+    }
+    return dado;
+}
     
     public int Tirar(){
         Random rand = new Random();

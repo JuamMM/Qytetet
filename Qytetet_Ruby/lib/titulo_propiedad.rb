@@ -23,7 +23,7 @@ class Titulo_propiedad
     @hipoteca_base=unaHipoteca
     @precio_edificar=unEdificar
     @numcasas=0
-    @numHoteles=0
+    @numhoteles=0
   end
   
   public
@@ -63,4 +63,18 @@ class Titulo_propiedad
   def get_factor_revalorzacion
     return @factor_revalorizacion
   end
+  
+  @Overrride
+  def to_s()
+    return "Nombre: #{@nombre}\n"\
+           "Hipotecada: #{@hipotecada}\n"\
+           "Precio de compra: #{@precio_compra}\n"\
+           "Alquiler: #{@alquiler_base}\n"\
+           "Factor revalorizacion: #{@factor_revalorizacion}\n"\
+           "Hipoteca base:: #{@hipoteca_base}\n"\
+           "Precio edificar: #{@precio_edificar}\n"\
+           "Numero de casas: #{@numcasas}\n"\
+           "Numero de hoteles: #{@numhoteles}\n"\
+  end
+  
 end

@@ -13,11 +13,12 @@ require_relative "casilla"
 require_relative "tablero"
   attr_accessor:objetoQytetet
   attr_accessor:tablero
+  
   def initialize
     @objetoQytetet = Qytetet.new
-    @tablero = Casilla.new(7,TipoCasilla::SALIDA,Titulo_propiedad.new("", false, 0, 0, 0, 0, 0))
+    @tablero = Tablero.new
   end
-  
+    
   def main
     @objetoQytetet.inicializar_cartas_sorpresa
     puts @tablero.to_s()

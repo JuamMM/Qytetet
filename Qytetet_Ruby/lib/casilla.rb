@@ -13,18 +13,19 @@ class Casilla
   def initialize(unNumero,unTipoCasilla,unTituloPropiedad)
     @tipo_casilla=unTipoCasilla
     set_titulo(unTituloPropiedad)
-    @numero=unNumero
+    @numero_casilla=unNumero
     @coste=unTituloPropiedad.get_precio_compra
   end
   
-  def const1(unNumero,unTipoCasilla,unTituloPropiedad)
-    new(unNumero,unTipoCasilla,unTituloPropiedad)
+  def self.const1(unNumero,unTipoCasilla,unTituloPropiedad)
+     return new(unNumero,unTipoCasilla,unTituloPropiedad)
   end
   
-  def const2(unNumero,unTipoCasilla)
-    new(unNumero,unTipoCasilla,Titulo_propiedad.new("", false, 0, 0, 0, 0, 0))
+  def self.const2(unNumero,unTipoCasilla)
+    return new(unNumero,unTipoCasilla,Titulo_propiedad.new("", false, 0, 0, 0, 0, 0))
   end
   
+  private_class_method :new
   
   def get_numero_casilla
     return @numero_casilla
@@ -45,10 +46,10 @@ class Casilla
   @Overrride
   def to_s()
     if @coste==0 then
-      return "Casilla: #{@numero_casilla} \n Tipo de Casilla: #{@tipo_casilla}" 
+      return "Casilla: #{@numero_casilla} \nTipo de Casilla: #{@tipo_casilla} \n\n" 
     else
-      return "Casilla: #{@numero_casilla} \n Tipo de Casilla: #{@tipo_casilla} 
-                \n Coste: #{@coste} \n Titulo Porpiedad: #{@titulo_propiedad}"
+      return "Casilla: #{@numero_casilla} \nTipo de Casilla: #{@tipo_casilla} "\
+                "\nCoste: #{@coste} \nTitulo Piedad: #{@titulo_propiedad} \n"
     end
  end
   

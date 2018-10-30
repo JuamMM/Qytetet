@@ -46,7 +46,7 @@ class Titulo_propiedad
   end
   
   def get_numcasas
-    return @numcasa
+    return @numcasas
   end
   
   def get_numhoteles

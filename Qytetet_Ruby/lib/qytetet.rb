@@ -98,6 +98,7 @@ class Qytetet
     inicializar_jugadores(nombres)
     inicializar_tablero
     inicializar_cartas_sorpresa
+    @jugador_actual = @jugadores[0]
   end
   
   private
@@ -220,6 +221,10 @@ class Qytetet
     for i in 0..@mazo.size()-1
       puts @mazo[i].to_s()
     end
+  end
+  
+  def get_jugador_actual
+    return @jugador_actual
   end
   
 end

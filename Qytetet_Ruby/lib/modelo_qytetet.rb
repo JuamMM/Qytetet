@@ -34,7 +34,7 @@ require_relative "dado"
     
   def main
     @objetoQytetet.inicializar_juego(@nombres)
-    puts @objetoQytetet.consultor_mazo
+    puts @objetoQytetet.get_jugador_actual.to_s
   end
  
 end

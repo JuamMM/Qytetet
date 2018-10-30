@@ -56,20 +56,33 @@ class Tablero
   
   public
   
-  #def obtener_casilla_final(casilla,desplazamiento)
+  def es_casilla_carcel(numeroCasilla)
+    devolver = false
+    if(numeroCasilla==@Carcel.get_numero_casilla())
+      devolver=true
+    end   
+    return devolver
+  end
   
-  #end
+  def obtener_casilla_numero(numeroCasilla)
+    return @Casillas[numeroCasilla]
+  end
   
-  #def obtener_casilla_numero(numero_casilla)
-  
-  #end
+  def obtener_casilla_final(casilla,desplazamiento)
+    suma = 0
+    suma = casilla.get_numero_casilla() + desplazamiento
+    if(suma>@num_casillas-1)
+      suma = suma - @num_casillas
+    end
+    return @Casillas[suma]
+  end
   
   def get_casillas
     return @Casilla
   end
   
   def get_carcel
-    return @carcel
+    return @Carcel
   end
   
   @Overrride

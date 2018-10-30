@@ -13,7 +13,8 @@ class Jugador
   def initialize(unNombre)
     @encarcelado=false
     @nombre=unNombre
-    @saldo=7.500
+    @saldo=7500
+    @propiedades = Array.new
   end
   
   #def cancelar_hipoteca
@@ -24,17 +25,24 @@ class Jugador
   
   #end
   
-  #def cuantas_casas_hoteles_tengo
-  
-  #end
+  def cuantas_casas_hoteles_tengo
+    devolver = 0
+    for i in 0..@propiedades.size()
+      devolver += @propiedades[i].get_numcasas()
+      devolver += @propiedades[i].get_numhoteles()
+    end
+    return devolver
+  end
   
   #def debo_pagar_alquiler
   
   #end
   
-  #def devolver_carta_libertad
-  
-  #end
+  def devolver_carta_libertad
+    devolver = Sorpresa.new(@carta_libertad.get_texto,@carta_libertad.get_tipo,@carta_libertad.get_valor)
+    @carta_libertad=null
+    return devolver
+  end
   
   #def edificar_casa(unTituloPropiedad)
   
@@ -48,9 +56,15 @@ class Jugador
   
   #end
   
-  #def es_de_mi_propiedad(unTituloPropiedad)
-  
-  #end
+  def es_de_mi_propiedad(unTituloPropiedad)
+    devolver = false
+    for i in 0..@propiedades.size
+      if(@propiedades[i].get_nombre()==unTituloPropiedad.get_nombre())
+        devolver = true
+      end
+    end
+    return devolver
+  end
   
   #def estoy_en_calle_libre
   
@@ -88,25 +102,41 @@ class Jugador
   
   #end
   
-  #def modificar_saldo(cantidad)
+  def modificar_saldo(cantidad)
+    @saldo += cantidad
+    return @saldo
+  end
   
-  #end
+  def obtener_capital
+    devolver = @saldo
+    for i in 0..@propiedades.size()
+      if(@propiedades[i].get_hipotecada)
+        devolver -= @propiedades[i].get_hipoteca_base
+      else
+        devolver += @propiedades[i].get_precio_compra()
+        devolver += @propiedades[i].get_numcasas() * @getpropiedades[i].get_factor_revalorizacion()
+      end
+    end
+    return devolver
+  end
   
-  #def obtener_capital
-  
-  #end
-  
-  #def obtener_propiedades(hipotecada)
-  
-  #end
+  def obtener_propiedades(hipotecada)
+    devolver = Array.new
+    for i in 0..@propieades.size()
+      if(@propieades[i].get_hipotecada==hipotecada)
+        devolver<<@propiedades[i]
+      end
+    end
+    return devolver
+  end
   
   #def pagar_alquiler
   
   #end
   
-  #def pagar_impuesto
-  
-  #end
+  def pagar_impuesto
+    @saldo -= @casilla_actual.get_coste
+  end
   
   #def pagar_libertad(cantidad)
   
@@ -125,16 +155,47 @@ class Jugador
     @encarcelado=encarcelado
   end
   
-  #def tengo_carta_libertad
-    
-  #end
+  def tengo_carta_libertad
+    devolver = false
+    if(@carta_libertad!=null)
+      devolver = true
+    end
+    return devolver
+  end
   
-  #def tengo_saldo(cantidad)
-  
-  #end
+  def tengo_saldo(cantidad)
+    devolver = false
+    if(@saldo>=cantidad)
+      devolver = true
+    end
+    return devolver
+  end
   
   #def vender_propiedad(casilla)
   
   #end
+  
+  @Overrride
+  def to_s()
+    if(@propiedades.size==0)
+      return "Nombre: #{@nombre}\n"\
+              "Saldo: #{@saldo}\n"\
+              "Encarcelado: #{@encarcelado}\n"\
+              "Casilla actual: #{@casilla_actual}\n"\
+              "Tiene carta libertad: #{@carta_libertad}\n"\
+    else
+      return "Nombre: #{@nombre}\n"\
+           "Saldo: #{@saldo}\n"\
+           "Capital: #{obtener_capital}\n"\
+           "Encarcelado: #{@encarcelado}\n"\
+           "Casilla actual: #{@casilla_actual}\n"\
+           "Tiene carta libertad: #{@carta_libertad}\n"\
+           "Propiedades: #{
+              for i in 0.. @propiedades.size 
+                @propiedades.to_s()
+              end
+          }\n"\
+     end
+  end
   
 end

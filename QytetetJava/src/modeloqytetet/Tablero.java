@@ -20,10 +20,7 @@ public class Tablero {
    public Casilla getCasillaCarcel(){
        return carcel;
    }
-   public Casilla obtenerCasillaNumero(int numeroCasilla){
-        return casillas.get(numeroCasilla);
-   }
-   
+ 
    @Override        
    public String toString(){
        return "Casillas = " + casillas.toString() + "\t Cárcel = " + carcel.toString() + "\n";        
@@ -34,7 +31,6 @@ public class Tablero {
         casillas.add(new Casilla(TipoCasilla.PARKING,10)); // Parking
         casillas.add(new Casilla(TipoCasilla.IMPUESTO,3)); // Impuesto
         casillas.add(new Casilla(TipoCasilla.JUEZ,15)); // Juez
-        casillas.add(new Casilla(TipoCasilla.CARCEL,5)); // Cárcel
         
         casillas.add(new Casilla(TipoCasilla.SORPRESA,7));
         casillas.add(new Casilla(TipoCasilla.SORPRESA,13));
@@ -54,8 +50,26 @@ public class Tablero {
         casillas.add(new Casilla(TipoCasilla.CALLE,19,new TituloPropiedad("Desembarco del rey",false,600,200,1.50f,300,180,0,0)));
         
         carcel = new Casilla(casillas.get(4).getTipo(),casillas.get(4).getNumeroCasilla());
-}
- 
+    }
    
+    Boolean esCasillaCarcel(int numeroCasilla){
+        if (numeroCasilla == 5)
+            return true;
+        else
+            return false;
+    }
+    
+    public Casilla obtenerCasillaNumero(int numeroCasilla){
+        return casillas.get(numeroCasilla);
+    }
+   
+    Casilla obtenerCasillaFinal(Casilla casilla,int desplazamiento){
+        int suma=0;
+        suma+= casilla.getNumeroCasilla();
+        if(suma > 19){
+               suma -= 20;       
+        }
+       return casillas.get( suma );
+    }
 }
    

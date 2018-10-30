@@ -28,6 +28,7 @@ public class Qytetet {
     private Jugador jugadorActual;  // por inicializar
     private ArrayList<Jugador> jugadores; // por inicializar
     private Sorpresa cartaActual;
+    private int indiceJugadorActual;
     
     
     
@@ -170,14 +171,20 @@ public class Qytetet {
             
             // Establecemos a cada jugador el saldo a 7500
             jugadores.get(i).setSaldo(7500);            
-
-}
+        }
+    }   
     
-    private void setCartaActual(Sorpresa cartaActual){}
+    private void setCartaActual(Sorpresa cartaActual){
+        this.cartaActual=cartaActual;
+    }
+    
+    public void setEstadoJuego(EstadoJuego estadoJuego){}
     
     //public void siguienteJugado(){}
     
-    //int tirarDado(){}
+    int tirarDado(){
+       return dado.Tirar();
+    }
     
     //public Boolean venderPropiedad(int numeroCasilla){}
     

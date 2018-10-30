@@ -18,11 +18,10 @@ public class PruebaQytetet {
     public static void main(String[] args) {
         ArrayList <Sorpresa> mazo = new ArrayList <>();
         
-        juego.inicializarCartasSorpresa();
-        
         System.out.print(juego.getMazo().toString());
         
         System.out.print(juego.getTablero().toString());
+
     }
     
 }

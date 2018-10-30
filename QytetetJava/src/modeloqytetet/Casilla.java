@@ -33,13 +33,10 @@ public class Casilla {
    }
   // TituloPropiedad asignarPropieterio(Jugador jugador){}
    
-   private void setTitulo (TituloPropiedad titulo){
-       this.titulo=titulo;
-   }
    public int getNumeroCasilla(){
        return numeroCasilla;
    }
-   public int getPrecioCompra(){
+   public int getCoste(){
        return precioCompra;
    }
    public TipoCasilla getTipo(){
@@ -68,6 +65,10 @@ public class Casilla {
    //int pagarAlquiler(){}
    
    //Boolean propietarioEncarcelado(){}
+   
+   private void setTitulo (TituloPropiedad titulo){
+       this.titulo=titulo;
+   }
    
    //Boolean soyEdificable(){}
    

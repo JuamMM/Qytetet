@@ -13,6 +13,7 @@ class Titulo_propiedad
   attr_accessor :precio_edificar
   attr_accessor :num_casas
   attr_accessor :num_hoteles
+  attr_accessor :propietario
   
   def initialize (unNombre,unHipotecada,unPrecio,unAlquiler,unFactor,unaHipoteca,unEdificar)
     @nombre=unNombre
@@ -63,6 +64,66 @@ class Titulo_propiedad
   def get_factor_revalorzacion
     return @factor_revalorizacion
   end
+  
+  #def calcular_coste_cancelar
+  
+  #end
+  
+  #def calcular_coste_hipotecar
+  
+  #end
+  
+  #def calcular_importe_alquiler
+  
+  #end
+  
+  #def calcular_precio_venta
+  
+  #end
+  
+  #def cancelar_hipoteca
+  
+  #end
+  
+  #def cobrar_alquiler(coste)
+  
+  #end
+  
+  #def edificar_casa
+  
+  #end
+  
+  #def edificar_hotel
+  
+  #end
+  
+  #def hipotecar
+  
+  #end
+  
+  def get_propietario
+    return @propietario
+  end
+  
+  #def pagar_alquiler
+  
+  #end
+  
+  #def propietario_encarcelado
+  
+  #end
+  
+  #def set_hipotecada(hipotecada)
+  
+  #end
+  
+  def set_propietario(unPropietario)
+    @propietario=unPropietario
+  end
+  
+  #def tengo_propietario
+  
+  #end
   
   @Overrride
   def to_s()

@@ -14,7 +14,9 @@ class Sorpresa
   
   @Overrride
   def to_s()
-    return "Texto: #{@texto} \n Valor: #{@valor} \n Tipo: #{@tipo}\n"
+    return "Texto: #{@texto}\n"\
+           "Valor: #{@valor}\n"\
+           "Tipo: #{@tipo}\n\n"
   end
   
   def get_texto()

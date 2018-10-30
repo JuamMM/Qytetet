@@ -5,10 +5,12 @@
 class Tablero
   attr_accessor :Casilla
   attr_accessor :Carcel
+  attr_accessor :num_casillas
   
   public
   def initialize    
       @Casilla = Array.new
+      @num_casillas=20
       incializar_tablero()
 
   end
@@ -46,13 +48,30 @@ class Tablero
     @Casilla<<(Casilla.const1(18, TipoCasilla::CALLE, Titulo_propiedad.new("Bravos",false,550,170,1.35,275,120)))
     @Casilla<<(Casilla.const1(19, TipoCasilla::CALLE, Titulo_propiedad.new("Desembarco del rey",false,600,200,1.50,300,180)))
     
-    @Carcel=@Casilla[5]
-     
-
-    
+    @Carcel=@Casilla[5]  
   end
   
+  
+
+  
   public
+  
+  #def obtener_casilla_final(casilla,desplazamiento)
+  
+  #end
+  
+  #def obtener_casilla_numero(numero_casilla)
+  
+  #end
+  
+  def get_casillas
+    return @Casilla
+  end
+  
+  def get_carcel
+    return @carcel
+  end
+  
   @Overrride
   def to_s()
     for i in 0..19

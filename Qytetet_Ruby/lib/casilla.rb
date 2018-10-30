@@ -43,6 +43,26 @@ class Casilla
     return @titulo_propiedad
   end
   
+  #def asignar_propietario(Jugador)
+  
+  #end
+  
+  #def pagar_alquiler
+  
+  #end
+  
+  #def propietario_encarcelado
+  
+  #end
+  
+  #def soy_edificable
+  
+  #end
+  
+  #def tengo_propietario
+  
+  #end
+  
   @Overrride
   def to_s()
     if @coste==0 then

@@ -20,6 +20,10 @@ public class Tablero {
    public Casilla getCasillaCarcel(){
        return carcel;
    }
+   
+   public ArrayList<Casilla> getPropiedades(){
+       return casillas;
+   }
  
    @Override        
    public String toString(){

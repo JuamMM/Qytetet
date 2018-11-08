@@ -31,7 +31,7 @@ public class Casilla {
        
        
    }
-  // TituloPropiedad asignarPropieterio(Jugador jugador){}
+  //TituloPropiedad asignarPropieterio(Jugador jugador){}
    
    public int getNumeroCasilla(){
        return numeroCasilla;
@@ -47,7 +47,6 @@ public class Casilla {
    }
    @Override
    public String toString(){
-        // Tiene titulo, luego es una calle
         String comun = "Numero casilla = " + this.numeroCasilla + "\t" +
             "Coste = " + this.titulo.getPrecioCompra() + "\t" + 
             "Numero Hoteles = " + this.titulo.getNumHoteles() + "\t" +
@@ -64,13 +63,25 @@ public class Casilla {
    
    //int pagarAlquiler(){}
    
-   //Boolean propietarioEncarcelado(){}
+   Boolean propietarioEncarcelado(){
+       return titulo.propietarioEncarcelado();
+   }
    
    private void setTitulo (TituloPropiedad titulo){
        this.titulo=titulo;
    }
    
-   //Boolean soyEdificable(){}
+   Boolean soyEdificable(){
+       Boolean devolver;
+       if(tipo == TipoCasilla.CALLE)
+           devolver=true;
+       else
+           devolver=false;
+       
+       return devolver;
+   }
    
-   //Boolean tengoPropietario(){}
+   Boolean tengoPropietario(){
+       return titulo.tengoPropietario();
+   }
 }

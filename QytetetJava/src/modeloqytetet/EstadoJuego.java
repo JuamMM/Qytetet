@@ -9,6 +9,7 @@ package modeloqytetet;
  *
  * @author joseng
  */
-public class EstadoJuego {
-    
+public enum EstadoJuego {
+    JA_CONSORPRESA,ALGUNJUGADORENBANCARROTA,JA_PUEDECOMPRAROGESTIONAR,JA_PREPARADO
+    ,JA_ENCARCELADO,JA_ENCARCELADOCONOPCIONDELIBERTAD;
 }

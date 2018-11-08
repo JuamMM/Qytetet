@@ -93,7 +93,16 @@ public class TituloPropiedad {
     //int pagarAlquiler(){}
     
     
-    //Boolean propietarioEncarcelado(){}
+    Boolean propietarioEncarcelado(){
+        Boolean devolver;
+        
+        if(propietario.getEncarcelado()==true)
+            devolver=true;
+        else
+            devolver=false;
+        
+        return devolver;
+    }
     
     //void setHipotecada(Boolean hipotecada){}
     
@@ -134,6 +143,12 @@ public class TituloPropiedad {
                 + "Número de Casas: " + Integer.toString(numCasas) + "\n\n"
                 + "Número de Hoteles: " + Integer.toString(numHoteles) + "\n\n";
         return devuelve;
+    }
+    public void setCasas(int numCasas){
+        this.numCasas=numCasas;
+    }
+    public void setHoteles(int numHoteles){
+        this.numHoteles=numHoteles;
     }
     
 }

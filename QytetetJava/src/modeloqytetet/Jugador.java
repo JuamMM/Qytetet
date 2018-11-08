@@ -3,7 +3,7 @@ package modeloqytetet;
 import java.util.ArrayList;
         
         
-public class Jugador {
+public class Jugador implements Comparable {
    private Boolean encarcelado;
    private String nombre;
    private int saldo;
@@ -20,6 +20,13 @@ public class Jugador {
        this.casillaActual = null;
        this.propiedades = new ArrayList<TituloPropiedad>();
    }
+   
+    @Override
+    public int compareTo(Object otroJugador) {
+        int otroCapital = ((Jugador) otroJugador).obtenerCapital();
+        return otroCapital - obtenerCapital();
+    }
+
    @Override
      public String toString(){
          String propiedadesJugador ="";
@@ -71,13 +78,36 @@ public class Jugador {
        return libertadTemporal;
    }
    
-   //Boolean edificarCasa(TituloPropiedad titulo){}
+   Boolean edificarCasa(TituloPropiedad titulo){
+        int numcasas=titulo.getNumCasas();
+        Boolean devolver=false;
+        if(titulo.getPropietario().esDeMiPropiedad(titulo)==true){
+            if(numcasas<4){
+                titulo.setCasas(numcasas+1);
+                devolver=true;
+            }
+        }
+        return devolver;
+   }
    
-   //Boolean edificarHotel(TituloPropiedad titulo){}
+   Boolean edificarHotel(TituloPropiedad titulo){
+       int numcasas=titulo.getNumCasas();
+       int numhoteles=titulo.getNumHoteles();
+       Boolean devolver=false;
+       
+       if(titulo.getPropietario().esDeMiPropiedad(titulo)==true){
+           if(numcasas==4){
+               titulo.setCasas(0);
+               titulo.setHoteles(1);
+               devolver=true;
+           }
+       }
+       return devolver;
+   }
    
    //private void eliminarDeMisPropiedades(){}
    
-   private Boolean esDeMiPropiedad(TituloPropiedad titulo){
+   protected Boolean esDeMiPropiedad(TituloPropiedad titulo){
        Boolean encontrado=false;
        
        for(int i=0;i<this.propiedades.size() && encontrado==false ;i++){
@@ -88,7 +118,14 @@ public class Jugador {
        return encontrado;
    }
    
-   //Boolean estoyEnCalleLibre(){}
+   Boolean estoyEnCalleLibre(){
+        Boolean devolver=true;
+        
+        if(casillaActual.getTituloPropiedad().tengoPropietario()==true)
+            devolver=false;
+        
+        return devolver;
+   }
    
    Sorpresa getCartaLibertad(){
         return cartaLibertad;
@@ -114,7 +151,16 @@ public class Jugador {
        return saldo;
    }
    
-   //Boolean hipotecarPropiedad(TituloPropiedad titulo){}
+   Boolean hipotecarPropiedad(TituloPropiedad titulo){
+       Boolean hipotecado=false;
+       if(this.esDeMiPropiedad(titulo)==true){
+           if(titulo.getHipotecada()==false){
+               titulo.cambiaHipotecada();
+               hipotecado=true;
+            }
+       }
+       return hipotecado;
+   }
    
    //void irACarcel(Casilla casilla){}
    
@@ -130,11 +176,10 @@ public class Jugador {
                 int costeBase = this.propiedades.get(i).getPrecioCompra();
                 int numCasas = this.propiedades.get(i).getNumCasas();
                 int numHoteles = this.propiedades.get(i).getNumHoteles();
-                // Se suma
+  
                 if(!this.propiedades.get(i).getHipotecada()){
                     capital += costeBase * (numCasas + numHoteles);
                 }else{
-                // Se resta
                     capital -= costeBase * (numCasas + numHoteles);
             }
         }
@@ -142,7 +187,23 @@ public class Jugador {
         return capital;
    }
    
-   //ArrayList<TituloPropiedad> obtenerPropiedades(Boolean hipotecada){  }
+   ArrayList<TituloPropiedad> obtenerPropiedades(Boolean estadoHipoteca){
+       
+       ArrayList<TituloPropiedad> hipotecadas = new ArrayList<TituloPropiedad>();
+       ArrayList<TituloPropiedad> noHipotecadas = new ArrayList<TituloPropiedad>(); 
+        
+       for(int i = 0; i < this.propiedades.size(); i++){
+            if(this.propiedades.get(i).getHipotecada() == true)
+                hipotecadas.add(this.propiedades.get(i));
+            else
+                noHipotecadas.add(this.propiedades.get(i));
+}
+       if(estadoHipoteca == true)
+           return hipotecadas;
+       else
+           return noHipotecadas;
+       
+   }
    
    //void pagarAlquiler(){}
    
@@ -150,7 +211,11 @@ public class Jugador {
        saldo -= casillaActual.getCoste();
     }
    
-   //void pagarLibertad(int  cantidad){}
+   void pagarLibertad(int  cantidad){
+       if(encarcelado == true)
+           if(this.saldo>=cantidad);
+               this.setSaldo(saldo-cantidad);
+   }
    
    //void setAttribute(attribute){}
    
@@ -178,9 +243,23 @@ public class Jugador {
            return false;
    }
    
-   //private Boolean tengoSaldo(int cantidad){}
+   private Boolean tengoSaldo(int cantidad){
+       if(saldo >= cantidad)
+           return true;
+       else 
+           return false;
+   }
    
-   //Boolean venderPropiedad(Casilla casilla){}
+   Boolean venderPropiedad(Casilla casilla){
+       int numerocasilla=casilla.getNumeroCasilla();
+       Boolean devolver=false;
+       if(this.esDeMiPropiedad(this.propiedades.get(numerocasilla))==true){
+           this.getPropiedades().remove(numerocasilla);
+           this.setSaldo(this.getPropiedades().get(numerocasilla).getPrecioCompra());
+           devolver=true;
+       }  
+       return devolver;    
+   }
    
    
 }

@@ -78,7 +78,7 @@ class Titulo_propiedad
   end
   
   def calcular_precio_venta
-    return @precio_compra + (@precio_edificar * @numcasas) + (@precio_edificar * @numhoteles)
+    return @precio_compra + (@numhoteles + @numcasas) *@precio_edificar * @factor_revalorizacion
   end
   
   def cancelar_hipoteca
